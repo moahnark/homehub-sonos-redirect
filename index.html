@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HomeHub · Sonos sign-in</title>
+<style>
+  body { font: 17px -apple-system, system-ui, sans-serif; background: #111; color: #eee;
+         display: grid; place-items: center; min-height: 100vh; margin: 0; text-align: center; }
+  a { color: #ff9f0a; font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+  <p>Returning to HomeHub…</p>
+  <p><a id="back" href="homehub://sonos">Open HomeHub</a></p>
+</main>
+<script>
+  // Sonos redirects here with ?code=…&state=… after sign-in. Hand them to the app's URL scheme;
+  // the sign-in sheet in HomeHub catches homehub:// and closes itself.
+  var target = "homehub://sonos" + window.location.search;
+  document.getElementById("back").href = target;
+  window.location.replace(target);
+</script>
+</body>
+</html>
